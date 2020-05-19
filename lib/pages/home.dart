@@ -46,7 +46,15 @@ class _MyHomeState extends State<Home> {
                     leading: Image.network(contentChefClient.getImageUrl(
                         publicId: topSite.payload.image)),
                     title: Text(topSite.payload.title),
-                    subtitle: Text(topSite.payload.description)
+                    subtitle: Text(topSite.payload.description),
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => DetailsPage(publicId: topSite.publicId),
+                        ),
+                      );
+                    },
                   );
                 },
                 separatorBuilder: (BuildContext context, int index) => const Divider(),
