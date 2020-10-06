@@ -7,12 +7,16 @@ class _ContentChefClient {
 
   _ContentChefClient() {
     this._media = Media();
-    this._onlineChannel = ContentChef(configuration: _config).getOnlineChannel(apiKey: 'your-api-key', publishingChannel: 'your-channel-mnemonicId');
+    this._onlineChannel = ContentChef(configuration: _config).getOnlineChannel(
+        apiKey: 'your-api-key', publishingChannel: 'your-channel-mnemonicId');
   }
 
-  Future<List<ContentResponse<T>>> searchContents<T>({ SearchContentsFilters filters, FromJsonDef<T> fromJson }) async {
+  Future<List<ContentResponse<T>>> searchContents<T>(
+      {SearchContentsFilters filters, FromJsonDef<T> fromJson}) async {
     try {
-      PaginatedResponse<T> result = await this._onlineChannel.searchContents<T>(filters: filters, fromJson: fromJson);
+      PaginatedResponse<T> result = await this
+          ._onlineChannel
+          .searchContents<T>(filters: filters, fromJson: fromJson);
       return result.items;
     } catch (e) {
       print(e);
@@ -20,9 +24,12 @@ class _ContentChefClient {
     }
   }
 
-  Future<T> getContent<T>({ GetContentFilters filters, FromJsonDef<T> fromJson }) async {
+  Future<T> getContent<T>(
+      {GetContentFilters filters, FromJsonDef<T> fromJson}) async {
     try {
-      ContentResponse<T> result = await this._onlineChannel.getContent<T>(filters: filters, fromJson: fromJson);
+      ContentResponse<T> result = await this
+          ._onlineChannel
+          .getContent<T>(filters: filters, fromJson: fromJson);
       return result.payload;
     } catch (e) {
       print(e);
@@ -30,8 +37,10 @@ class _ContentChefClient {
     }
   }
 
-  getImageUrl({ String publicId, MediaTransformations transformations}) {
-    var publicUrl = this._media.getUrl(publicId: publicId, transformations: transformations);
+  getImageUrl({String publicId, MediaTransformations transformations}) {
+    var publicUrl = this
+        ._media
+        .imageUrl(publicId: publicId, transformations: transformations);
     return publicUrl;
   }
 }

@@ -55,6 +55,30 @@ You are now ready to start the flutter project:
 - with [VS code](https://flutter.dev/docs/get-started/test-drive?tab=vscode#run-the-app-1)
 - with [Terminal & Editor](https://flutter.dev/docs/get-started/test-drive?tab=terminal#run-the-app-2)
 
+# Extras
+
+## Media
+
+We have provided useful methods needed to retrieve images, videos and files from `ContentChef`
+
+### Images
+```dart
+  var mediaUtils = Media();
+  var publicMediaUrl = mediaUtils.imageUrl(publicId: 'the-media-publicId', MediaTransformations(autoFormat: true));
+```
+
+### Videos
+```dart
+  var mediaUtils = Media();
+  var publicMediaUrl = mediaUtils.videoUrl(publicId: 'the-media-publicId', VideoTransformations(autoFormat: true, croppingMode: CroppingMode.fill));
+```
+
+### Files
+```dart
+  var mediaUtils = Media();
+  var publicMediaUrl = mediaUtils.rawUrl(publicId: 'the-media-publicId');
+```
+
 Enjoy!
 
 To Learns More
